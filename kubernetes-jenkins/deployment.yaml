@@ -24,7 +24,8 @@ spec:
               claimName: jenkins-pv-claim
       containers:
         - name: jenkins
-          image: jenkins/jenkins:lts
+        # setup my own jenkins_with_docker image
+          image: rizk95/jenkins_with_docker:latest
           resources:
             # limits:
             #   memory: "2Gi"
