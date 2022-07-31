@@ -34,6 +34,6 @@ resource "google_compute_instance" "bastion-vm" {
     # set permission to gke
     scopes = ["cloud-platform"]
   }
-  
+
   metadata_startup_script = file("./configuration.sh")
 }

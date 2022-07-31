@@ -12,3 +12,18 @@ resource "google_project_iam_member" "member" {
   member  = "serviceAccount:${google_service_account.k8s-service-account.email}"
 
 }
+
+# resource "google_service_account_key" "mykey" {
+#   service_account_id = google_service_account.k8s-service-account.name
+#   private_key_type = "TYPE_GOOGLE_CREDENTIALS_FILE" 
+# }
+
+
+# resource "kubernetes_secret" "google-application-credentials" {
+#   metadata {
+#     name = "google-application-credentials"
+#   }
+#   data = {
+#     "credentials.json" = base64decode(google_service_account_key.mykey.private_key)
+#   }
+# }

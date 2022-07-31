@@ -20,7 +20,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: jenkins-pv-claim
   # set namespace
-  namespace: devops-tools
+  namespace: devops
 spec:
   storageClassName: gold
   accessModes:
