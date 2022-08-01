@@ -6,8 +6,8 @@ pipeline {
             stage('install k8') {
                 steps {
                     sh """
-                     kubectl apply -f application-deployment.yaml
-                     kubectl apply -f application-service.yaml
+                     kubectl apply -f ./kubernetes-jenkins/application-deployment.yaml
+                     kubectl apply -f ./kubernetes-jenkins/application-service.yaml
                     """
                 }
             }
