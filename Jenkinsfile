@@ -6,6 +6,7 @@ pipeline {
             stage('install kubectl') {
                 steps {
                     sh """
+                     kubectl create namespace app
                      kubectl apply -f test.yaml
                     """
                 }
