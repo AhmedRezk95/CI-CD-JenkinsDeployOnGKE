@@ -25,7 +25,7 @@ spec:
       containers:
         - name: jenkins
         # setup my own jenkins_with_docker image
-          image: rizk95/jenkins_with_docker:latest
+          image: rizk95/jenkins_with_docker_terra_ansible_kubectl:latest
           resources:
             # limits:
             #   memory: "2Gi"
