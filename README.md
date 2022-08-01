@@ -47,9 +47,18 @@ terraform plan
 # apply the infrastrucutre
 terraform apply --auto-approve
 ```
-3- After creating the GCP architecture we have to ssh to bastion-vm and connect it to GKE manually by the following code
+
+3- Copy Kubernetes yaml files inside bastion-vm for future use using the following command
+```bash
+# gcloud compute scp --recurse <what you want to send> <Target EC2 machine>:<Destination inside EC2>
+gcloud compute scp --recurse ./kubernetes-jenkins bastion-vm:/home/rizk
+```
+![image](https://user-images.githubusercontent.com/30655799/182141579-105f824b-da97-4208-8c03-d69f919e4139.png)
+
+4- After creating the GCP architecture we have to ssh to bastion-vm and connect it to GKE manually by the following code
 
 ```bash
 gcloud container clusters get-credentials <GKE-Cluster-name> --zone <zone> --project <project-id>
 ```
+![image](https://user-images.githubusercontent.com/30655799/182139904-d95a783a-6a52-4df8-820f-8a7c78e97f60.png)
 
