@@ -1,12 +1,14 @@
 # CI_CD_GKE_DEPLOY
-GCP hands-on using Terraform
+CI/CD Project to deploy an application using Jenkins inside GKE Cluster
 
 ## Introduction
-Build an application refer to [LINK](https://github.com/atefhares/DevOps-Challenge-Demo-Code) on GCP architecture using the following:
+Building an application using Jenkins pipeline on GCP Google Kubernetes Engine [GKE](https://cloud.google.com/kubernetes-engine) using the following:
 
+* Build a google cloud architecture for appling this jenkins and  on private GCP GKE Cluster using terraform 
+* Create Jenkins Dockerfile with docker and kubectl installed and upload it to dockerhub registery
+* Setup a Jenkins Deployment inside GKE cluster and set the requirements in order to make jenkins build deployments inside the GKE Cluster
 * Build a Dockerfile for the application and upload it to GCP container registery service
-* Build a google cloud architecture for appling this application on private GCP GKE Cluster
-* Deploy the application using Kubernetes deployment and services
+* Deploy the application using Kubernetes deployment and services inside Jenkinsfile build 
 
 ## Architecture
 ![Untitled-2022-07-26-2255](https://user-images.githubusercontent.com/30655799/181225755-0e36d4d3-3c1f-46b7-9097-4c13aac53f80.png)
@@ -14,12 +16,18 @@ Build an application refer to [LINK](https://github.com/atefhares/DevOps-Challen
 In the architecture we have one vpc which has two subnets (management) and (restricted)
 
 * For management subnet it will be connected to router and cloud NAT in order to make the bastion-vm accessible through ssh.
-* For restricted subnet it will be purely private it only has an access to bastion-vm, it will contain the cluster which will host the application as deployment and it will be connected to external HTTP loadbalancer in order to access the application
+* For restricted subnet it will be connected to router and cloud NAT in order to get Jenkins Deployment inside GKE online to install plugins and get images for registries, the subnet will only have an access to bastion-vm, it will contain the cluster which will host the application as deployment
 
 ## Steps
-1- Convert the application to docker file (it will be pushed later in GCP container registery:
+1- Create Dockerfile for Jenkins (it will be pushed later in dockerhub registery):
+* It will have docker client /ansible / kubectl installed by default in order to use it in the future:
 
-![image](https://user-images.githubusercontent.com/30655799/181230534-7281f82c-6d1f-46f9-8e56-f4a172f2bfe8.png)
+![image](https://user-images.githubusercontent.com/30655799/182135371-16eace72-c3b0-4a40-b501-101cd490aa4d.png)
+
+![image](https://user-images.githubusercontent.com/30655799/182136240-96f707da-f0ef-4ee2-bdd6-efe2509b3aaf.png)
+
+![image](https://user-images.githubusercontent.com/30655799/182135603-7514d65a-1f15-4626-8f08-82337250a22d.png)
+
 
 2- Build the architecture in terraform 
 * set modules for simplification (Network-GKE-serviceaccount)
