@@ -81,3 +81,7 @@ gcloud container clusters get-credentials <GKE-Cluster-name> --zone <zone> --pro
 ## Final Results
  ![image](https://user-images.githubusercontent.com/30655799/182148632-38440dcd-70fa-4138-8b70-6aa473f04bed.png)
 
+
+## Next Step
+ We will build a Jenkins pipeline to deploy an application on GKE Cluster:
+ * You will find it in [CI/CD AppDeployment Using Jenkins On GKE](https://github.com/AhmedRezk95/CI_CD_AppDeployUsingJenkinsOnGKE)
