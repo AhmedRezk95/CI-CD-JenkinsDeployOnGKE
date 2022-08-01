@@ -1,4 +1,4 @@
-# CI/CD GKE DEPLOY
+# CI/CD GKE Deployment
 CI/CD Project to deploy an application using Jenkins inside GKE Cluster
 
 ## Introduction
