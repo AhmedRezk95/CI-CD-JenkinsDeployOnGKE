@@ -11,7 +11,8 @@ Building an application using Jenkins pipeline on GCP Google Kubernetes Engine [
 * Deploy the application using Kubernetes deployment and services inside Jenkinsfile build 
 
 ## Architecture
-![Untitled-2022-07-26-2255](https://user-images.githubusercontent.com/30655799/181225755-0e36d4d3-3c1f-46b7-9097-4c13aac53f80.png)
+![GCP Digram ITI Final](https://user-images.githubusercontent.com/30655799/182245780-98e0fcfb-c02f-4079-a1ff-91f7dc851f37.png)
+
 
 In the architecture we have one vpc which has two subnets (management) and (restricted)
 
