@@ -13,7 +13,7 @@ spec:
       labels:
         app: jenkins-server
     spec:
-      # for Jenkins pod to be able to write to the local persistent volume
+      # For Jenkins pod to be able to write to the local persistent volume
       securityContext:
             fsGroup: 1000 
             runAsUser: 1000
@@ -22,6 +22,11 @@ spec:
         - name: jenkins-data
           persistentVolumeClaim:
               claimName: jenkins-pv-claim
+      #  
+        - name: docker-deamon
+          hostPath:
+            path: /var/run/docker.sock
+
       containers:
         - name: jenkins
         # setup my own jenkins_with_docker image
@@ -57,5 +62,8 @@ spec:
             failureThreshold: 3
           volumeMounts:
             - name: jenkins-data
-              mountPath: /var/jenkins_home         
+              mountPath: /var/jenkins_home 
+
+            - name: docker-deamon
+              mountPath: /var/run/docker.sock
       
