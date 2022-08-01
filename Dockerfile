@@ -6,17 +6,22 @@ RUN  apt-get install -y \
     curl \
     gnupg \
     lsb-release
+# Install Docker CLI - note: this is just docker without docker daemon
 RUN  mkdir -p /etc/apt/keyrings
 RUN  curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 RUN echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   $(lsb_release -cs) stable" |  tee /etc/apt/sources.list.d/docker.list > /dev/null
 RUN  apt-get update  -y &&  apt-get install -y docker-ce docker-ce-cli
+# Set jenkins user to docker group
 RUN usermod -aG docker jenkins
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor |  tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/hashicorp.list
+# Install Terraform (optional not required)
 RUN apt update -y &&  apt install -y terraform
+# Install Ansible (optional not required)
 RUN apt-get install python -y && apt-get install ansible -y
+# Install kubectl
 RUN apt-get update -y && apt-get install -y ca-certificates curl -y
 RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
