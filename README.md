@@ -62,3 +62,12 @@ gcloud container clusters get-credentials <GKE-Cluster-name> --zone <zone> --pro
 ```
 ![image](https://user-images.githubusercontent.com/30655799/182139904-d95a783a-6a52-4df8-820f-8a7c78e97f60.png)
 
+5- create new namespace "devops" in GKE and create all requirements using yaml files, we created the following:
+  * K8 ServiceAccount
+  * ClusterRole
+  * ClusterRoleBinding
+  * StorageClass using this  [type](https://kubernetes.io/docs/concepts/storage/storage-classes/#gce-pd)
+  * PersistentVolumeClaim
+  * Jenkins deployment using our uploded image above
+  * Service "LoadBalancer" type
+![image](https://user-images.githubusercontent.com/30655799/182142903-1adb5f7c-2569-46d2-a4f8-4d85cce5bcf4.png)
