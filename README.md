@@ -22,7 +22,7 @@ In the architecture we have one vpc which has two subnets (management) and (rest
 1- Create Dockerfile for Jenkins (it will be pushed later in dockerhub registery):
 * It will have docker client /ansible / kubectl installed by default in order to use it in the future:
 
-![image](https://user-images.githubusercontent.com/30655799/182135371-16eace72-c3b0-4a40-b501-101cd490aa4d.png)
+![image](https://user-images.githubusercontent.com/30655799/182191726-79ad2309-f041-4654-bde8-731dbad8131d.png)
 
 ![image](https://user-images.githubusercontent.com/30655799/182136240-96f707da-f0ef-4ee2-bdd6-efe2509b3aaf.png)
 
