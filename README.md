@@ -71,3 +71,13 @@ gcloud container clusters get-credentials <GKE-Cluster-name> --zone <zone> --pro
   * Jenkins deployment using our uploded image above
   * Service "LoadBalancer" type
 ![image](https://user-images.githubusercontent.com/30655799/182142903-1adb5f7c-2569-46d2-a4f8-4d85cce5bcf4.png)
+
+6- Use loadbalancer http://<external-ip>:<container-port> to launch the jenkins
+  * Get the initial Jenkins password 
+ ```bash
+ kubectl logs <pod-name> -n <namespace> 
+ ```
+ 
+## Final Results
+ ![image](https://user-images.githubusercontent.com/30655799/182148632-38440dcd-70fa-4138-8b70-6aa473f04bed.png)
+
