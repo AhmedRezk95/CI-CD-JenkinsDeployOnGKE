@@ -1,4 +1,4 @@
-# CI/CD GKE Deployment
+# CI/CD Deploy Jenkins on Google Kubernetes Engine (GKE) 
 CI/CD Project to deploy an application using Jenkins inside GKE Cluster
 
 ## Introduction
