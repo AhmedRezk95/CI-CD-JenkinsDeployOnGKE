@@ -3,11 +3,11 @@ pipeline {
 
         stages {
 
-            stage('install kubectl') {
+            stage('install k8') {
                 steps {
                     sh """
-                     kubectl create namespace app
-                     kubectl apply -f test.yaml
+                     kubectl apply -f application-deployment.yaml
+                     kubectl apply -f application-service.yaml
                     """
                 }
             }
