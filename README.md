@@ -1,4 +1,4 @@
-# CI_CD_GKE_DEPLOY
+# CI/CD GKE DEPLOY
 CI/CD Project to deploy an application using Jenkins inside GKE Cluster
 
 ## Introduction
@@ -47,9 +47,27 @@ terraform plan
 # apply the infrastrucutre
 terraform apply --auto-approve
 ```
-3- After creating the GCP architecture we have to ssh to bastion-vm and connect it to GKE manually by the following code
+
+3- Copy Kubernetes yaml files inside bastion-vm for future use using the following command
+```bash
+# gcloud compute scp --recurse <what you want to send> <Target EC2 machine>:<Destination inside EC2>
+gcloud compute scp --recurse ./kubernetes-jenkins bastion-vm:/home/rizk
+```
+![image](https://user-images.githubusercontent.com/30655799/182141579-105f824b-da97-4208-8c03-d69f919e4139.png)
+
+4- After creating the GCP architecture we have to ssh to bastion-vm and connect it to GKE manually by the following code
 
 ```bash
 gcloud container clusters get-credentials <GKE-Cluster-name> --zone <zone> --project <project-id>
 ```
+![image](https://user-images.githubusercontent.com/30655799/182139904-d95a783a-6a52-4df8-820f-8a7c78e97f60.png)
 
+5- create new namespace "devops" in GKE and create all requirements using yaml files, we created the following:
+  * K8 ServiceAccount
+  * ClusterRole
+  * ClusterRoleBinding
+  * StorageClass using this  [type](https://kubernetes.io/docs/concepts/storage/storage-classes/#gce-pd)
+  * PersistentVolumeClaim
+  * Jenkins deployment using our uploded image above
+  * Service "LoadBalancer" type
+![image](https://user-images.githubusercontent.com/30655799/182142903-1adb5f7c-2569-46d2-a4f8-4d85cce5bcf4.png)
