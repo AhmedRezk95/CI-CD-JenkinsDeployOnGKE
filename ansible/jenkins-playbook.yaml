@@ -1,0 +1,34 @@
+- hosts: bastion
+  remote_user: rizk
+  become: true
+  tasks: 
+      - name: authorize bastion-vm to the gke cluster
+        shell: gcloud container clusters get-credentials my-gke-cluster --zone us-east1-b --project ahmed-rizk
+      
+      - name: copy files
+        copy:
+          src: ./kubernetes-jenkins/.
+          dest: kubernetes-jenkins/.
+
+
+      - name : Create all jenkins components (namespace/serviceAccount/Storage/deployment)
+        shell: kubectl apply -Rf kubernetes-jenkins/  
+
+      - name : pause ansible for  a minute for creation purposes  
+        pause:
+            minutes: 1
+      
+      - name: Get loadbalancer 
+        shell: 'kubectl get svc -n jenkins | grep load-balancer'
+        register: load-balancer
+
+      - debug:
+          var: load-balancer.stdout_lines 
+
+      - name : get password to login to jenkins 
+        shell: 'kubectl exec $(kubectl get pods -n devops | grep -i jenkins | cut -d" " -f1) -n devops -- cat /var/jenkins_home/secrets/initialAdminPassword '
+        register: password
+      
+      - debug: 
+          var : password.stdout_lines
+        
