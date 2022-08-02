@@ -11,7 +11,8 @@ Building an application using Jenkins pipeline on GCP Google Kubernetes Engine [
 * Deploy the application using Kubernetes deployment and services inside Jenkinsfile build 
 
 ## Architecture
-![Untitled-2022-07-26-2255](https://user-images.githubusercontent.com/30655799/181225755-0e36d4d3-3c1f-46b7-9097-4c13aac53f80.png)
+![GCP Digram ITI Final](https://user-images.githubusercontent.com/30655799/182245780-98e0fcfb-c02f-4079-a1ff-91f7dc851f37.png)
+
 
 In the architecture we have one vpc which has two subnets (management) and (restricted)
 
@@ -22,7 +23,7 @@ In the architecture we have one vpc which has two subnets (management) and (rest
 1- Create Dockerfile for Jenkins (it will be pushed later in dockerhub registery):
 * It will have docker client /ansible / kubectl installed by default in order to use it in the future:
 
-![image](https://user-images.githubusercontent.com/30655799/182135371-16eace72-c3b0-4a40-b501-101cd490aa4d.png)
+![image](https://user-images.githubusercontent.com/30655799/182191726-79ad2309-f041-4654-bde8-731dbad8131d.png)
 
 ![image](https://user-images.githubusercontent.com/30655799/182136240-96f707da-f0ef-4ee2-bdd6-efe2509b3aaf.png)
 
@@ -81,3 +82,8 @@ gcloud container clusters get-credentials <GKE-Cluster-name> --zone <zone> --pro
 ## Final Results
  ![image](https://user-images.githubusercontent.com/30655799/182148632-38440dcd-70fa-4138-8b70-6aa473f04bed.png)
 
+
+## Next Step
+ We will build a Jenkins pipeline to deploy an application on GKE Cluster:
+ * You will find it in :
+### [CI/CD AppDeployment Using Jenkins On GKE](https://github.com/AhmedRezk95/CI_CD_AppDeployUsingJenkinsOnGKE)
